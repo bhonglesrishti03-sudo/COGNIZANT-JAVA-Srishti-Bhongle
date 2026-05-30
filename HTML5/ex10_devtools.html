@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DevTools Debugging - Community Event Portal</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #1f3864;
+            text-align: center;
+        }
+
+        .container {
+            width: 600px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        /* Intentionally broken layout to demo DevTools fix */
+        .brokenCard {
+            background-color: #fdecea;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid red;
+        }
+
+        .fixedCard {
+            background-color: #e8f5e9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid green;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #1f3864;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover { background-color: #2e74b5; }
+
+        #logOutput {
+            background-color: #1e1e1e;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            padding: 15px;
+            border-radius: 6px;
+            min-height: 100px;
+            margin-top: 15px;
+            white-space: pre-wrap;
+        }
+
+        .tip {
+            background-color: #eaf3fb;
+            border-left: 4px solid #2e74b5;
+            padding: 10px 15px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <nav style="margin-bottom: 20px;">
+        <a href="index.html" style="text-decoration:none; color:#2e74b5;">← Back to Portal</a>
+    </nav>
+
+    <div class="container">
+
+        <h1>Debugging with Chrome DevTools</h1>
+
+        <!-- Broken vs Fixed Card Demo -->
+        <h2>1. Inspect Element Demo</h2>
+
+        <div class="brokenCard" id="brokenCard">
+            ❌ This card has a layout issue (red border, wrong background).
+            Right-click → Inspect to fix it live in DevTools!
+        </div>
+
+        <div class="fixedCard">
+            ✔ This is how the card should look after fixing styles in DevTools.
+        </div>
+
+        <div class="tip">
+            <strong>DevTools Tip:</strong> Right-click any element → Inspect →
+            edit CSS in the Styles panel on the right. Changes are live but not saved.
+        </div>
+
+        <!-- Console Logging Demo -->
+        <h2>2. Console Logging</h2>
+
+        <button onclick="runConsoleDemo()">
+            Run Console Demo
+        </button>
+
+        <button onclick="triggerError()">
+            Trigger Console Error
+        </button>
+
+        <div id="logOutput">// Click a button to see output here and in DevTools Console...</div>
+
+        <div class="tip">
+            <strong>DevTools Tip:</strong> Press F12 → Console tab to see
+            console.log(), console.warn(), and console.error() messages.
+        </div>
+
+        <!-- Breakpoint Demo -->
+        <h2>3. Breakpoint Demo</h2>
+
+        <button onclick="breakpointDemo()">
+            Run Breakpoint Function
+        </button>
+
+        <p id="breakpointResult" style="color:#1f3864; font-weight:bold;"></p>
+
+        <div class="tip">
+            <strong>DevTools Tip:</strong> F12 → Sources tab → open this HTML file →
+            click the line number next to <em>let total = 0</em> to set a breakpoint,
+            then click the button above to pause execution and inspect variables.
+        </div>
+
+    </div>
+
+    <script>
+
+        // Console logging demo
+        function runConsoleDemo() {
+
+            let output = document.getElementById("logOutput");
+            output.textContent = "";
+
+            // Different console methods
+            console.log("✔ Page loaded successfully");
+            console.warn("⚠ Seats are filling up fast!");
+            console.info("ℹ Event starts at 6:00 PM");
+            console.error("✘ Failed to load event image");
+
+            // Logging objects
+            let event = {
+                name:  "Cultural Night",
+                seats: 50,
+                date:  "2026-06-15"
+            };
+            console.log("Event Object:", event);
+            console.table(event);
+
+            output.textContent =
+                ">> console.log()   → Check DevTools Console\n" +
+                ">> console.warn()  → Yellow warning shown\n" +
+                ">> console.error() → Red error shown\n" +
+                ">> console.table() → Object shown as table\n\n" +
+                "Open DevTools (F12) → Console tab to see all output!";
+        }
+
+        // Intentional error for demo
+        function triggerError() {
+            let output = document.getElementById("logOutput");
+            try {
+                // This will throw an error - accessing undefined variable
+                let result = undeclaredVariable.toUpperCase();
+            } catch (error) {
+                console.error("Caught Error:", error.message);
+                output.textContent =
+                    "✘ Error caught: " + error.message + "\n\n" +
+                    "Check DevTools Console → you will see the red error.\n" +
+                    "try-catch prevents the page from crashing.";
+            }
+        }
+
+        // Breakpoint demo function - set breakpoint on 'let total = 0' line
+        function breakpointDemo() {
+
+            let events = [
+                { name: "Music Festival", seats: 100 },
+                { name: "Food Fair",      seats: 80  },
+                { name: "Sports Meet",    seats: 60  }
+            ];
+
+            let total = 0;   // ← Set breakpoint here in DevTools Sources tab
+
+            for (let i = 0; i < events.length; i++) {
+                total += events[i].seats;
+                console.log("Processing:", events[i].name, "| Running total:", total);
+            }
+
+            document.getElementById("breakpointResult").textContent =
+                "Total seats across all events: " + total;
+        }
+
+        // Log on page load
+        console.log("Welcome to the Community Portal - DevTools Exercise");
+        console.log("Open DevTools (F12) to inspect this page!");
+
+    </script>
+
+</body>
+</html>

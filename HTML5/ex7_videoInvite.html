@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Video Invite - Community Event Portal</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1f3864;
+        }
+
+        .container {
+            width: 640px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        video {
+            display: block;
+            margin: 15px auto;
+            border: 3px solid #1f3864;
+            border-radius: 8px;
+        }
+
+        #videoStatus {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #videoStatus.waiting { color: gray; }
+        #videoStatus.ready   { color: green; }
+        #videoStatus.playing { color: #1f3864; }
+        #videoStatus.ended   { color: darkorange; }
+
+    </style>
+
+</head>
+<body>
+
+    <nav style="margin-bottom: 20px;">
+        <a href="index.html" style="text-decoration:none; color:#2e74b5;">← Back to Portal</a>
+    </nav>
+
+    <div class="container">
+
+        <h1>Community Event Promo</h1>
+
+        <p style="text-align:center; color:#555;">
+            Watch our latest event highlights below!
+        </p>
+
+        <!-- Video element with media events -->
+        <video
+            id="promoVideo"
+            width="580"
+            controls
+            oncanplay="videoReady()"
+            onplay="videoPlaying()"
+            onended="videoEnded()">
+
+            <source
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                type="video/mp4">
+
+            Your browser does not support the video tag.
+
+        </video>
+
+        <!-- Status message updates based on video state -->
+        <p id="videoStatus" class="waiting">
+            Loading video, please wait...
+        </p>
+
+    </div>
+
+    <script>
+
+        // oncanplay - fires when video has buffered enough to play
+        function videoReady() {
+            let status = document.getElementById("videoStatus");
+            status.textContent = "✔ Video is ready to play!";
+            status.className   = "ready";
+        }
+
+        // onplay - fires when user presses play
+        function videoPlaying() {
+            let status = document.getElementById("videoStatus");
+            status.textContent = "▶ Video is now playing...";
+            status.className   = "playing";
+        }
+
+        // onended - fires when video finishes
+        function videoEnded() {
+            let status = document.getElementById("videoStatus");
+            status.textContent = "Thanks for watching! Register for the event.";
+            status.className   = "ended";
+        }
+
+        // onbeforeunload - warns user if video is still playing and they try to leave
+        window.onbeforeunload = function(event) {
+            let video = document.getElementById("promoVideo");
+            if (!video.paused && !video.ended) {
+                event.preventDefault();
+                event.returnValue =
+                    "The promo video is still playing. Are you sure you want to leave?";
+            }
+        };
+
+    </script>
+
+</body>
+</html>

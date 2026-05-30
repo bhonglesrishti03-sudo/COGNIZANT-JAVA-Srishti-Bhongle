@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Geolocation - Community Event Portal</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1f3864;
+        }
+
+        .container {
+            width: 520px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #1f3864;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover { background-color: #2e74b5; }
+
+        #statusMessage {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 15px;
+            display: none;
+        }
+
+        #statusMessage.loading { background-color: #eaf3fb; border-left: 4px solid #2e74b5; color: #1f3864; }
+        #statusMessage.success { background-color: #e8f5e9; border-left: 4px solid green;   color: #1b5e20; }
+        #statusMessage.error   { background-color: #fdecea; border-left: 4px solid red;     color: #b71c1c; }
+
+        #coordsBox {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #f0f4ff;
+            border: 1px solid #2e74b5;
+            border-radius: 6px;
+            display: none;
+        }
+
+        #coordsBox p { margin: 5px 0; font-size: 14px; }
+        #coordsBox strong { color: #1f3864; }
+
+    </style>
+
+</head>
+<body>
+
+    <nav style="margin-bottom: 20px;">
+        <a href="index.html" style="text-decoration:none; color:#2e74b5;">← Back to Portal</a>
+    </nav>
+
+    <div class="container">
+
+        <h1>Find Nearby Events</h1>
+
+        <p style="text-align:center; color:#555;">
+            Click the button to detect your location
+            and find community events near you.
+        </p>
+
+        <button onclick="findNearbyEvents()">
+            📍 Find Nearby Events
+        </button>
+
+        <div id="statusMessage"></div>
+
+        <div id="coordsBox">
+            <p><strong>Latitude:</strong>  <span id="lat"></span></p>
+            <p><strong>Longitude:</strong> <span id="lon"></span></p>
+            <p><strong>Accuracy:</strong>  <span id="accuracy"></span> meters</p>
+            <p><strong>Nearest Event:</strong> Community Cultural Night — 1.2 km away</p>
+        </div>
+
+    </div>
+
+    <script>
+
+        function findNearbyEvents() {
+
+            let statusBox = document.getElementById("statusMessage");
+            let coordsBox = document.getElementById("coordsBox");
+
+            // Reset
+            coordsBox.style.display  = "none";
+            statusBox.style.display  = "block";
+            statusBox.className      = "loading";
+            statusBox.textContent    = "Detecting your location, please wait...";
+
+            // Check browser support
+            if (!navigator.geolocation) {
+                statusBox.className   = "error";
+                statusBox.textContent = "Geolocation is not supported by your browser.";
+                return;
+            }
+
+            // Options object
+            let options = {
+                enableHighAccuracy: true,   // Use GPS if available
+                timeout: 10000,             // Max 10 seconds
+                maximumAge: 0               // Always get fresh position
+            };
+
+            navigator.geolocation.getCurrentPosition(
+                onSuccess,
+                onError,
+                options
+            );
+        }
+
+        // Success callback
+        function onSuccess(position) {
+            let statusBox = document.getElementById("statusMessage");
+            let coordsBox = document.getElementById("coordsBox");
+
+            statusBox.className   = "success";
+            statusBox.textContent = "✔ Location found! Showing nearby events.";
+
+            document.getElementById("lat").textContent      = position.coords.latitude.toFixed(6);
+            document.getElementById("lon").textContent      = position.coords.longitude.toFixed(6);
+            document.getElementById("accuracy").textContent = Math.round(position.coords.accuracy);
+
+            coordsBox.style.display = "block";
+        }
+
+        // Error callback - handles 3 specific error types
+        function onError(error) {
+            let statusBox = document.getElementById("statusMessage");
+            statusBox.className = "error";
+
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    statusBox.textContent = "Permission denied. Please allow location access.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    statusBox.textContent = "Location unavailable. Try again later.";
+                    break;
+                case error.TIMEOUT:
+                    statusBox.textContent = "Request timed out. Check your connection.";
+                    break;
+                default:
+                    statusBox.textContent = "An unknown error occurred.";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

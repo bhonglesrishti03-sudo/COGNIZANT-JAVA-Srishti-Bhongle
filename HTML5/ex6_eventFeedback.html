@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Event Feedback - Community Event Portal</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 600px;
+            margin: auto;
+            padding: 25px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #1f3864;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #1f3864;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #2e74b5;
+        }
+
+        #eventImage {
+            border: 2px solid #1f3864;
+            border-radius: 5px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .message {
+            color: green;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <nav style="margin-bottom: 20px;">
+        <a href="index.html" style="text-decoration:none; color:#2e74b5;">← Back to Portal</a>
+    </nav>
+
+    <div class="container">
+
+        <h1>Event Feedback Form</h1>
+
+        <!-- onblur - validate phone when field loses focus -->
+        <label>Phone Number:</label>
+        <input
+            type="text"
+            id="phone"
+            placeholder="Enter 10-digit phone number"
+            onblur="validatePhone()">
+        <p id="phoneMessage"></p>
+
+        <!-- onchange - show fee when dropdown changes -->
+        <label>Select Event:</label>
+        <select id="eventType" onchange="showFee()">
+            <option value="">Select Event</option>
+            <option value="100">Music Festival</option>
+            <option value="200">Food Fair</option>
+            <option value="300">Sports Meet</option>
+            <option value="150">Art Exhibition</option>
+            <option value="50">Community Cleanup</option>
+            <option value="200">Cultural Night</option>
+        </select>
+        <p id="feeDisplay"></p>
+
+        <!-- onkeyup - count characters in textarea -->
+        <label>Feedback:</label>
+        <textarea
+            id="feedback"
+            rows="5"
+            placeholder="Enter your feedback"
+            onkeyup="countChars()">
+        </textarea>
+        <p id="charCount">Characters: 0</p>
+
+        <!-- ondblclick - enlarge image on double click -->
+        <h3>Double Click Image to Enlarge</h3>
+        <img
+            src="https://via.placeholder.com/200"
+            alt="Community Event"
+            id="eventImage"
+            width="200"
+            ondblclick="enlargeImage()">
+
+        <br><br>
+
+        <!-- onclick - show confirmation on button click -->
+        <button onclick="confirmSubmission()">
+            Submit Feedback
+        </button>
+
+        <p id="confirmation"></p>
+
+    </div>
+
+    <script>
+
+        // onblur - fires when phone input loses focus
+        function validatePhone() {
+            let phone   = document.getElementById("phone").value;
+            let message = document.getElementById("phoneMessage");
+
+            if (phone.length === 10 && !isNaN(phone)) {
+                message.innerHTML = "✔ Valid Phone Number";
+                message.className = "message";
+            } else {
+                message.innerHTML = "✘ Please enter a valid 10-digit phone number";
+                message.className = "error";
+            }
+        }
+
+        // onchange - fires when dropdown selection changes
+        function showFee() {
+            let fee = document.getElementById("eventType").value;
+            document.getElementById("feeDisplay").innerHTML =
+                fee ? "Event Fee: ₹" + fee : "";
+        }
+
+        // onkeyup - fires after every key release in textarea
+        function countChars() {
+            let text = document.getElementById("feedback").value;
+            document.getElementById("charCount").innerHTML =
+                "Characters: " + text.length;
+        }
+
+        // ondblclick - fires on double click of image
+        function enlargeImage() {
+            document.getElementById("eventImage").style.width = "400px";
+        }
+
+        // onclick - fires on button click
+        function confirmSubmission() {
+            document.getElementById("confirmation").innerHTML =
+                "✔ Feedback Submitted Successfully!";
+            document.getElementById("confirmation").className = "message";
+        }
+
+    </script>
+
+</body>
+</html>

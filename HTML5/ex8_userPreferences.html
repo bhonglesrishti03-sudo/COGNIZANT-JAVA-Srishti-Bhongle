@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>User Preferences - Community Event Portal</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1f3864;
+        }
+
+        .container {
+            width: 500px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        #saveBtn  { background-color: #1f3864; color: white; }
+        #clearBtn { background-color: #c0392b; color: white; }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        #sessionInfo {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #eaf3fb;
+            border-left: 4px solid #2e74b5;
+            font-size: 14px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <nav style="margin-bottom: 20px;">
+        <a href="index.html" style="text-decoration:none; color:#2e74b5;">← Back to Portal</a>
+    </nav>
+
+    <div class="container">
+
+        <h1>Save Your Preferences</h1>
+
+        <p style="color:#555;">
+            Your preferred event type will be remembered
+            the next time you visit!
+        </p>
+
+        <label>Preferred Event Type:</label>
+
+        <select id="eventType" onchange="saveToSession()">
+            <option value="">-- Select Event --</option>
+            <option value="Music Festival">Music Festival</option>
+            <option value="Food Fair">Food Fair</option>
+            <option value="Sports Meet">Sports Meet</option>
+            <option value="Art Exhibition">Art Exhibition</option>
+            <option value="Community Cleanup">Community Cleanup</option>
+            <option value="Cultural Night">Cultural Night</option>
+        </select>
+
+        <button id="saveBtn" onclick="savePreference()">
+            Save Preference
+        </button>
+
+        <button id="clearBtn" onclick="clearPreferences()">
+            Clear Preferences
+        </button>
+
+        <p id="message"></p>
+
+        <!-- Shows sessionStorage value (lost when tab closes) -->
+        <div id="sessionInfo">
+            <strong>Session Selection (this tab only):</strong>
+            <span id="sessionValue">None</span>
+        </div>
+
+    </div>
+
+    <script>
+
+        // On page load - restore saved preference from localStorage
+        window.onload = function() {
+            let saved = localStorage.getItem("preferredEvent");
+            if (saved) {
+                document.getElementById("eventType").value = saved;
+                let msg = document.getElementById("message");
+                msg.textContent = "Welcome back! Restored preference: " + saved;
+                msg.style.color = "#1f3864";
+            }
+        };
+
+        // Save to localStorage on button click
+        function savePreference() {
+            let selected = document.getElementById("eventType").value;
+            let msg      = document.getElementById("message");
+
+            if (selected === "") {
+                msg.textContent = "Please select an event type first.";
+                msg.style.color = "red";
+                return;
+            }
+
+            localStorage.setItem("preferredEvent", selected);
+            msg.textContent = "✔ Preference saved: " + selected;
+            msg.style.color = "green";
+        }
+
+        // Save to sessionStorage on dropdown change
+        // sessionStorage is cleared when the browser tab is closed
+        function saveToSession() {
+            let selected = document.getElementById("eventType").value;
+            sessionStorage.setItem("sessionEvent", selected);
+            document.getElementById("sessionValue").textContent =
+                selected || "None";
+        }
+
+        // Clear both localStorage and sessionStorage
+        function clearPreferences() {
+            localStorage.removeItem("preferredEvent");
+            sessionStorage.removeItem("sessionEvent");
+
+            document.getElementById("eventType").value    = "";
+            document.getElementById("sessionValue").textContent = "None";
+
+            let msg = document.getElementById("message");
+            msg.textContent = "Preferences cleared!";
+            msg.style.color = "darkorange";
+        }
+
+    </script>
+
+</body>
+</html>

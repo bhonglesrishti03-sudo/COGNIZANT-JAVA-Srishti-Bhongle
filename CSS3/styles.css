@@ -1,0 +1,593 @@
+/* ============================================================
+   styles.css — Local Community Event Portal
+   CSS3 Module | Cognizant Upskilling Program
+   ============================================================ */
+
+
+/* ============================================================
+   Exercise 1 — Why CSS? Inline vs Internal vs External
+   All reusable styles moved here from HTML into this
+   external stylesheet and linked via <link> in <head>
+   ============================================================ */
+
+/* Universal selector — reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body base styles */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   Exercise 2 — CSS Syntax and Comments
+   Clean, readable CSS with descriptive comments
+   ============================================================ */
+
+/* Style for main CTA button */
+.cta-button {
+    background-color: #1f3864;
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover state for CTA button */
+.cta-button:hover {
+    background-color: #2e74b5;
+}
+
+/* Back to top link */
+.back-to-top {
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+    color: #2e74b5;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-to-top:hover {
+    text-decoration: underline;
+}
+
+
+/* ============================================================
+   Exercise 3 — Selectors Playground
+   Universal, Element, ID, Class, Grouping selectors
+   ============================================================ */
+
+/* Element selector — all h2 headings */
+h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #1f3864;
+}
+
+/* ID selector — main header banner */
+#mainHeader {
+    background: linear-gradient(135deg, #1f3864, #2e74b5);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#mainHeader h1 {
+    font-size: 36px;
+    letter-spacing: 2px;
+}
+
+#mainHeader p {
+    font-size: 16px;
+    margin-top: 8px;
+    opacity: 0.85;
+}
+
+/* Class selector — event card containers */
+.eventCard {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Grouping selector — h3 and p share these styles */
+h3, p {
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 18px;
+    color: #2e74b5;
+}
+
+
+/* ============================================================
+   Exercise 4 — Color & Background Styling
+   HEX, RGBA, background image, gradients
+   ============================================================ */
+
+/* Section headers with linear gradient */
+.section-header {
+    background: linear-gradient(135deg, #1f3864 0%, #2e74b5 100%);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px 8px 0 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* HEX color for event type badge */
+.badge {
+    display: inline-block;
+    background-color: #2e74b5;
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* RGBA for semi-transparent overlay backgrounds */
+.overlay-box {
+    background-color: rgba(31, 56, 100, 0.08);
+    border: 1px solid rgba(31, 56, 100, 0.15);
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+/* Page wrapper with subtle background */
+.page-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+
+/* ============================================================
+   Exercise 5 — Typography: Fonts and Text
+   Google Font, font properties, text properties
+   ============================================================ */
+
+/* Google Font 'Poppins' imported via <link> in HTML head */
+
+/* Portal tagline typography */
+.tagline {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    text-align: center;
+    color: rgba(255,255,255,0.8);
+    margin-top: 6px;
+}
+
+/* Event description text */
+.event-description {
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: justify;
+    color: #555;
+    letter-spacing: 0.3px;
+}
+
+/* Section title text */
+.section-title {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 13px;
+    color: #2e74b5;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-top: 30px;
+}
+
+
+/* ============================================================
+   Exercise 6 — Link and List Styling
+   Pseudo-classes, list-style, nav menu styling
+   ============================================================ */
+
+/* Navigation bar */
+.navbar {
+    background-color: #1f3864;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 0;
+    text-decoration: none;
+}
+
+/* Nav list — bullets removed */
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+}
+
+.nav-list li {
+    padding: 0;
+    margin: 0;
+}
+
+/* Link pseudo-classes */
+.nav-list a:link {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    padding: 15px 14px;
+    display: block;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+
+.nav-list a:visited {
+    color: rgba(255,255,255,0.6);
+}
+
+.nav-list a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-list a:active {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* Sidebar list with custom bullets */
+.event-list {
+    list-style-type: square;
+    list-style-position: inside;
+    padding: 10px 0;
+}
+
+.event-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.event-list li:last-child {
+    border-bottom: none;
+}
+
+
+/* ============================================================
+   Exercise 7 — Table Styling
+   Borders, padding, zebra striping, border-collapse
+   ============================================================ */
+
+/* Table wrapper */
+.table-section {
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+/* Main table styles */
+.events-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Table header */
+.events-table th {
+    background-color: #1f3864;
+    color: white;
+    padding: 12px 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Table cells */
+.events-table td {
+    padding: 10px 16px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Zebra striping — nth-child(even) */
+.events-table tr:nth-child(even) {
+    background-color: #f0f4f8;
+}
+
+/* Row hover highlight */
+.events-table tr:hover {
+    background-color: #d6e4f0;
+    transition: background-color 0.2s;
+}
+
+
+/* ============================================================
+   Exercise 8 — Box Model & Layout Control
+   margin, padding, border, outline, visibility vs display
+   ============================================================ */
+
+/* Event card box model */
+.eventCard {
+    background-color: white;
+    border: 1px solid #dce3ec;
+    border-radius: 10px;
+    padding: 20px 25px;
+    margin: 0 0 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    outline: none;
+    transition: outline 0.2s;
+}
+
+/* Highlight card when focused/active */
+.eventCard:focus-within {
+    outline: 3px solid #2e74b5;
+}
+
+/* Form input outline on focus */
+.portal-input:focus {
+    outline: 2px solid #2e74b5;
+    outline-offset: 2px;
+    border-color: #2e74b5;
+}
+
+/* visibility: hidden — takes up space but invisible */
+.hidden-visibility {
+    visibility: hidden;
+}
+
+/* display: none — completely removed from layout */
+.hidden-display {
+    display: none;
+}
+
+/* Demo box to show box model visually */
+.box-model-demo {
+    background-color: #eaf3fb;
+    border: 3px solid #2e74b5;
+    padding: 20px;
+    margin: 20px auto;
+    width: 300px;
+    text-align: center;
+    font-size: 14px;
+    color: #1f3864;
+}
+
+
+/* ============================================================
+   Exercise 9 — Multiple Columns in Text
+   column-count, column-gap, column-rule
+   ============================================================ */
+
+/* Community bulletin newspaper-style layout */
+.bulletin-section {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.bulletin-section h2 {
+    text-align: center;
+    border-bottom: 2px solid #1f3864;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Multi-column text layout */
+.newspaper-columns {
+    column-count: 2;
+    column-gap: 30px;
+    column-rule: 1px solid #ccc;
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: justify;
+    color: #444;
+}
+
+.newspaper-columns p {
+    margin-bottom: 12px;
+}
+
+
+/* ============================================================
+   Exercise 10 — Responsive Web Design with Media Queries
+   Mobile-first, flexible units, Flexbox, Grid
+   ============================================================ */
+
+/* Events grid — Flexbox layout */
+.events-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.events-grid .eventCard {
+    flex: 1 1 calc(33% - 20px);
+    min-width: 260px;
+}
+
+/* Gallery grid — CSS Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border: 2px solid #1f3864;
+    border-radius: 6px;
+}
+
+/* Flexible hero section using vw/vh */
+.hero {
+    width: 100%;
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* ── Tablet: screens smaller than 768px ── */
+@media (max-width: 768px) {
+
+    #mainHeader h1 {
+        font-size: 24px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    /* Stack nav links vertically */
+    .nav-list {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-list a:link,
+    .nav-list a:visited,
+    .nav-list a:hover {
+        padding: 10px 15px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Two-column grid becomes one column */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Flex cards stack vertically */
+    .events-grid .eventCard {
+        flex: 1 1 100%;
+    }
+
+    /* Reduce newspaper to single column */
+    .newspaper-columns {
+        column-count: 1;
+    }
+
+    /* Smaller font sizes on mobile */
+    body {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+/* ── Mobile: screens smaller than 480px ── */
+@media (max-width: 480px) {
+
+    .page-wrapper {
+        padding: 0 12px 30px;
+    }
+
+    #mainHeader {
+        padding: 25px 15px;
+    }
+
+    #mainHeader h1 {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-button {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    .events-table {
+        font-size: 12px;
+    }
+}
+
+
+/* ============================================================
+   Exercise 11 — Debug and Test with Dev Tools
+   Intentional issues to inspect and fix with DevTools
+   ============================================================ */
+
+/* Debug helper — add this class to see element boundaries */
+.debug-outline * {
+    outline: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+/* Form styles */
+.portal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.portal-input,
+.portal-select,
+.portal-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'Poppins', Arial, sans-serif;
+    transition: border-color 0.2s, outline 0.2s;
+}
+
+.portal-input:focus,
+.portal-select:focus,
+.portal-textarea:focus {
+    outline: 2px solid #2e74b5;
+    border-color: #2e74b5;
+}
+
+/* Confirmation and error messages */
+.msg-success {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.msg-error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Footer */
+.portal-footer {
+    background-color: #1f3864;
+    color: rgba(255,255,255,0.75);
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    margin-top: 40px;
+}

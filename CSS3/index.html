@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Local Community Event Portal — CSS3</title>
+
+    <!-- Exercise 5: Google Font imported via <link> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Exercise 1: External stylesheet linked here -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Exercise 1: Internal <style> for body background (demo only) -->
+    <style>
+        /* Internal style — body background color */
+        /* In production this would also go in styles.css */
+    </style>
+
+</head>
+<body>
+
+<!-- ============================================================
+     Exercise 6 — Navigation with Link Pseudo-classes
+     ============================================================ -->
+<nav class="navbar">
+    <a href="#" class="logo">🏙 Community Portal</a>
+    <ul class="nav-list">
+        <li><a href="#welcome">Home</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#bulletin">Bulletin</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="help.html" target="_blank">Help</a></li>
+    </ul>
+</nav>
+
+
+<!-- ============================================================
+     Exercise 3 & 4 — ID Selector, Gradient Header
+     ============================================================ -->
+<header id="mainHeader" class="hero">
+    <!-- Exercise 1: Inline style to make heading red (demo only) -->
+    <h1 style="color: white;">Local Community Event Portal</h1>
+    <!-- Exercise 5: tagline typography -->
+    <p class="tagline">Connecting Residents · Celebrating Community</p>
+</header>
+
+
+<div class="page-wrapper">
+
+
+    <!-- ============================================================
+         Exercise 3 — Welcome Section (ID, Class, Grouping selectors)
+         ============================================================ -->
+    <section id="welcome">
+
+        <p class="section-title">Exercise 3 &amp; 4 — Selectors &amp; Colors</p>
+
+        <!-- Exercise 3: Class selector .eventCard -->
+        <div class="eventCard">
+
+            <!-- Exercise 4: Badge with HEX color -->
+            <span class="badge">Welcome</span>
+
+            <h2>Welcome Back, Resident!</h2>
+
+            <!-- Exercise 1: Inline style demo (red heading) -->
+            <h3 style="color: red;">Special Offer: Free Entry to Cultural Night!</h3>
+
+            <!-- Exercise 5: Typography on description -->
+            <p class="event-description">
+                The Local Community Event Portal helps residents register for events,
+                check locations, and access basic city council services — all from
+                one convenient place.
+            </p>
+
+            <!-- Exercise 4: RGBA overlay box -->
+            <div class="overlay-box">
+                <p>This box uses <strong>rgba(31, 56, 100, 0.08)</strong> for
+                a semi-transparent background — demonstrating RGBA color usage.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================================================
+         Exercise 7 — Table Styling with Zebra Striping
+         ============================================================ -->
+    <section id="events">
+
+        <p class="section-title">Exercise 7 — Table Styling</p>
+
+        <div class="eventCard">
+
+            <div class="section-header">Upcoming Community Events</div>
+
+            <div class="table-section">
+                <table class="events-table">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Date</th>
+                            <th>Venue</th>
+                            <th>Fee</th>
+                            <th>Seats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Music Festival</td>
+                            <td>10 Jun 2026</td>
+                            <td>Central Park</td>
+                            <td>₹100</td>
+                            <td>200</td>
+                        </tr>
+                        <tr>
+                            <td>Food Fair</td>
+                            <td>15 Jun 2026</td>
+                            <td>Town Square</td>
+                            <td>₹200</td>
+                            <td>150</td>
+                        </tr>
+                        <tr>
+                            <td>Sports Meet</td>
+                            <td>20 Jun 2026</td>
+                            <td>Sports Ground</td>
+                            <td>₹300</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>Art Exhibition</td>
+                            <td>25 Jun 2026</td>
+                            <td>City Gallery</td>
+                            <td>₹150</td>
+                            <td>80</td>
+                        </tr>
+                        <tr>
+                            <td>Community Cleanup</td>
+                            <td>28 Jun 2026</td>
+                            <td>Riverside</td>
+                            <td>Free</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Cultural Night</td>
+                            <td>30 Jun 2026</td>
+                            <td>Auditorium</td>
+                            <td>₹200</td>
+                            <td>300</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================================================
+         Exercise 4 & 10 — Gallery with CSS Grid + Responsive
+         ============================================================ -->
+    <section id="gallery">
+
+        <p class="section-title">Exercise 4 &amp; 10 — Background Colors &amp; CSS Grid</p>
+
+        <div class="eventCard">
+
+            <div class="section-header">Community Event Gallery</div>
+
+            <!-- Exercise 10: CSS Grid layout -->
+            <div class="gallery-grid" style="margin-top:15px;">
+                <img src="images/event1.jpg" alt="Music Festival"    title="Music Festival">
+                <img src="images/event2.jpg" alt="Food Fair"         title="Food Fair">
+                <img src="images/event3.jpg" alt="Sports Meet"       title="Sports Meet">
+                <img src="images/event4.jpg" alt="Art Exhibition"    title="Art Exhibition">
+                <img src="images/event5.jpg" alt="Community Cleanup" title="Community Cleanup">
+                <img src="images/event6.jpg" alt="Cultural Night"    title="Cultural Night">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================================================
+         Exercise 8 — Box Model + Form with Outline on Focus
+         ============================================================ -->
+    <section id="register">
+
+        <p class="section-title">Exercise 5 &amp; 8 — Box Model &amp; Form Styling</p>
+
+        <!-- Exercise 8: Box model demo -->
+        <div class="box-model-demo">
+            <p><strong>Box Model Demo</strong></p>
+            <p>border: 3px solid | padding: 20px | margin: 20px auto</p>
+            <p>Inspect this in DevTools → Computed tab!</p>
+        </div>
+
+        <div class="eventCard">
+
+            <div class="section-header">Event Registration</div>
+
+            <form class="portal-form" style="margin-top:15px;" onsubmit="submitForm(event)">
+
+                <label>Name</label>
+                <!-- Exercise 8: outline on focus shown via CSS :focus -->
+                <input
+                    type="text"
+                    id="regName"
+                    class="portal-input"
+                    placeholder="Enter your name"
+                    required
+                    autofocus>
+
+                <label>Email</label>
+                <input
+                    type="email"
+                    id="regEmail"
+                    class="portal-input"
+                    placeholder="Enter your email"
+                    required>
+
+                <label>Date</label>
+                <input
+                    type="date"
+                    id="regDate"
+                    class="portal-input"
+                    required>
+
+                <label>Event Type</label>
+                <select id="regEvent" class="portal-select" required>
+                    <option value="">Select Event</option>
+                    <option>Music Festival</option>
+                    <option>Food Fair</option>
+                    <option>Sports Meet</option>
+                    <option>Art Exhibition</option>
+                    <option>Community Cleanup</option>
+                    <option>Cultural Night</option>
+                </select>
+
+                <label>Message</label>
+                <textarea
+                    id="regMessage"
+                    class="portal-textarea"
+                    rows="4"
+                    placeholder="Any special requirements?">
+                </textarea>
+
+                <button type="submit" class="cta-button">Register Now</button>
+
+                <p id="formResult"></p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================================================
+         Exercise 9 — Multi-Column Newspaper Layout
+         ============================================================ -->
+    <section id="bulletin">
+
+        <p class="section-title">Exercise 9 — Multi-Column Text Layout</p>
+
+        <div class="bulletin-section">
+
+            <h2>Community Bulletin</h2>
+
+            <!-- column-count, column-gap, column-rule applied via .newspaper-columns -->
+            <div class="newspaper-columns">
+
+                <p>
+                    The city council is excited to announce a series of community
+                    events planned throughout June 2026. Residents are encouraged
+                    to participate actively in all activities to foster a stronger
+                    sense of belonging and togetherness in our neighbourhood.
+                </p>
+
+                <p>
+                    The Music Festival kicks off the month on June 10th at Central
+                    Park. Local artists and bands will perform across three stages.
+                    Entry is available at ₹100 per person and includes food vouchers.
+                    Families with children under 12 get free entry.
+                </p>
+
+                <p>
+                    The Food Fair on June 15th brings together over 40 local vendors
+                    showcasing cuisines from across the region. The Town Square will
+                    be transformed into an open-air dining experience with live
+                    cooking demonstrations throughout the day.
+                </p>
+
+                <p>
+                    Sports Meet on June 20th welcomes athletes of all ages. Events
+                    include athletics, badminton, chess, and swimming. Register early
+                    as seats are limited to 100 participants. Winners receive trophies
+                    and gift vouchers sponsored by local businesses.
+                </p>
+
+                <p>
+                    The Cultural Night on June 30th at the Auditorium is the grand
+                    finale event of the month. Featuring dance performances, cultural
+                    exhibitions, and a community awards ceremony. Tickets at ₹200 are
+                    selling fast — register on the portal today.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================================================
+         Exercise 6 — Styled List
+         ============================================================ -->
+    <section id="contact">
+
+        <p class="section-title">Exercise 6 — Link &amp; List Styling</p>
+
+        <div class="eventCard">
+
+            <h2>Quick Links</h2>
+
+            <!-- Custom list styling via .event-list -->
+            <ul class="event-list">
+                <li>Music Festival — June 10 at Central Park</li>
+                <li>Food Fair — June 15 at Town Square</li>
+                <li>Sports Meet — June 20 at Sports Ground</li>
+                <li>Art Exhibition — June 25 at City Gallery</li>
+                <li>Community Cleanup — June 28 at Riverside</li>
+                <li>Cultural Night — June 30 at Auditorium</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================================================
+         Exercise 10 — Responsive Flexbox Cards
+         ============================================================ -->
+    <section>
+
+        <p class="section-title">Exercise 10 — Flexbox Responsive Cards</p>
+
+        <!-- Events grid uses Flexbox; cards stack on mobile -->
+        <div class="events-grid">
+
+            <div class="eventCard">
+                <span class="badge">Music</span>
+                <h3>Music Festival</h3>
+                <p class="event-description">Live performances by local artists at Central Park.</p>
+                <button class="cta-button" style="margin-top:10px;">Register</button>
+            </div>
+
+            <div class="eventCard">
+                <span class="badge">Food</span>
+                <h3>Food Fair</h3>
+                <p class="event-description">40+ vendors showcasing regional cuisines at Town Square.</p>
+                <button class="cta-button" style="margin-top:10px;">Register</button>
+            </div>
+
+            <div class="eventCard">
+                <span class="badge">Sports</span>
+                <h3>Sports Meet</h3>
+                <p class="event-description">Athletics, badminton, chess, and swimming for all ages.</p>
+                <button class="cta-button" style="margin-top:10px;">Register</button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <a href="#" class="back-to-top">↑ Back to Top</a>
+
+
+</div><!-- end .page-wrapper -->
+
+
+<!-- ============================================================
+     Footer
+     ============================================================ -->
+<footer class="portal-footer">
+    <p>&copy; 2026 Local Community Event Portal &nbsp;|&nbsp; Cognizant Upskilling Program</p>
+</footer>
+
+
+<script>
+    function submitForm(e) {
+        e.preventDefault();
+        let result = document.getElementById("formResult");
+        result.textContent = "✔ Registration Successful! We will contact you shortly.";
+        result.className = "msg-success";
+    }
+</script>
+
+</body>
+</html>

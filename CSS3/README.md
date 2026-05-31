@@ -14,7 +14,7 @@ CSS3/
 ├── index.html      → Full portal page (all CSS exercises visible here)
 ├── styles.css      → All CSS — organised by exercise with comments
 ├── help.html       → Help page (shares styles.css)
-└── images/         → Place event1.jpg to event6.jpg here
+└── images/         → Place events1.jpg to events6.jpg here
 ```
 
 ---
